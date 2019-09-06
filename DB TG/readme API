@@ -1,0 +1,42 @@
+This Api use For Add User in DB
+====================================================================
+fetch("https://nadirabc.herokuapp.com/user/addUser",{
+    method:"POST",
+    headers:{
+    'Content-Type':'application/json'
+    },
+    body:JSON.stringify({
+    name : 'Ali',
+    email : "ali1@gmail.com"
+    })}
+).then(res=>res.json())
+ .then(data=>console.log(data))
+ =====================================================================
+
+
+This Api user for Get data by email
+======================================================================
+fetch("https://nadirabc.herokuapp.com/user/getUserByEmail",{
+method:"POST",
+headers:{
+'Content-Type':'application/json'
+},
+body:JSON.stringify({email : "ali1@gmail.com"})}
+)
+.then(res=>res.json())
+.then(data=>console.log(data))
+=========================================================================
+
+
+add User score
+========================================================================
+fetch("https://nadirabc.herokuapp.com/score/addScore",{
+method:"POST",
+headers:{
+'Content-Type':'application/json'
+},
+body:JSON.stringify({_userId : "asdad", name: "khan",scores:{esay : 12,medium : 20 , hard: 15}})}
+)
+.then(res=>res.json())
+.then(data=>console.log(data))
+=========================================================================
