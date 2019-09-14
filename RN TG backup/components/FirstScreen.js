@@ -3,12 +3,30 @@ import { StyleSheet, Button, Image, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux'
 import Card from './GameCard'
-
+import { get_all_user } from '../store/action';
 
 
 class FirstScreen extends Component {
 
+constructor(props) {
+    super(props)
+    this.state = {
 
+    }
+}
+
+componentDidMount(){
+    this.fetchAllUser()
+}
+
+async fetchAllUser(){
+  await  fetch('https://nadirabc.herokuapp.com/user/getAll')
+  .then(response => response.json())
+  .then(data =>{
+      this.props.store_users_data(data)
+  }).then(data => console.log(data))
+  
+}
 
 
 
@@ -38,6 +56,7 @@ class FirstScreen extends Component {
                     />
                     
                 </View>
+                      
             </View>
         );
     }
@@ -46,14 +65,13 @@ class FirstScreen extends Component {
 
 function mapStateToProps(state) {
     return {
-        counter: state.counter
+      
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        increase: () => dispatch({ type: "INCREASE" }),
-        decrease: () => dispatch({ type: "DECREASE" }),
+        store_users_data : (users) => dispatch(get_all_user(users))
     }
 }
 

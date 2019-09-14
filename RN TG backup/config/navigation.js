@@ -2,29 +2,25 @@ import * as Routes from '../components/index';
 import { createAppContainer, createStackNavigator, createMaterialTopTabNavigator, createSwitchNavigator, createDrawerNavigator } from 'react-navigation';
 
 
-
-
-
-
 const AppStackNavigator = createStackNavigator({
-  // FirstScreen: {
-  //   screen: Routes.FirstScreen,
-  //   navigationOptions: () => ({
-  //     title: `Wellcome To Typing Game`,
-  //     headerStyle: { backgroundColor: '#8E6E53', Color: '#FFF', },
-  //     headerTintColor: '#FFF',
-  //   }),
-  // },
+  FirstScreen: {
+    screen: Routes.FirstScreen,
+    navigationOptions: () => ({
+      title: `Wellcome To Typing Game`,
+      headerStyle: { backgroundColor: '#8E6E53', Color: '#FFF', },
+      headerTintColor: '#FFF',
+    }),
+  },
 
 
-  // 'User': {
-  //   screen: Routes.User,
-  //   navigationOptions: () => ({
-  //     title: `Player Info`,
-  //     headerStyle: { backgroundColor: '#8E6E53', Color: '#FFF', },
-  //     headerTintColor: '#FFF',
-  //   }),
-  // },
+  'User': {
+    screen: Routes.User,
+    navigationOptions: () => ({
+      title: `Player Info`,
+      headerStyle: { backgroundColor: '#8E6E53', Color: '#FFF', },
+      headerTintColor: '#FFF',
+    }),
+  },
 
   'Login': {
     screen: Routes.Login,
@@ -36,6 +32,37 @@ const AppStackNavigator = createStackNavigator({
   },
 
 })
+
+
+const tabNav = createMaterialTopTabNavigator({
+  'Esay':{
+    screen: Routes.ScoreE
+  },
+  'Medium':{
+    screen: Routes.ScoreM
+  },
+  'Hard':{
+    screen: Routes.ScoreH
+  },
+  'Game':{
+    screen: Routes.PlayAgain
+  },
+
+},{
+  tabBarOptions: {
+    activeTintColor: '#fff',
+    inactiveTintColor: '#F2F2F2',
+    style: {
+      backgroundColor: '#8E6E53',
+      marginTop: 24,
+    },
+  },
+  navigationOptions: {
+    header: {
+      
+    }, 
+  },
+});
 
 
 const appSwitchNavigator = createSwitchNavigator({
@@ -52,7 +79,6 @@ const appSwitchNavigator = createSwitchNavigator({
     }),
   },
 
-
   'Game': {
     screen: Routes.Game,
     navigationOptions: () => ({
@@ -61,6 +87,10 @@ const appSwitchNavigator = createSwitchNavigator({
       headerTintColor: '#FFF',
     }),
   },
+
+  'Scores' :{
+    screen: tabNav,
+  } 
 
 })
 

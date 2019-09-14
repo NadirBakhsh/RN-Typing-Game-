@@ -22,8 +22,6 @@ class Level extends Component {
   }
 
 
-
-
   render() {
     return (
       <View style={styles.container}>
@@ -31,7 +29,7 @@ class Level extends Component {
         <View style={{ display: 'flex', flex: 3, flexDirection: "column", justifyContent: "space-around", alignItems: 'center' }}>
           <Card
             word={"Esay Level"}
-            Paragraph={'In this lavel You have 20 sec per/word '}
+            Paragraph={'In this lavel You have 15 sec per/word '}
             Button={<Button title="Start" color="#8E6E53"
               onPress={() => this.esay()}
             />}
@@ -42,7 +40,7 @@ class Level extends Component {
             word={"Medium Level"}
             Paragraph={'In this lavel You have 10 sec per/word '}
             Button={
-              <Button  title="Start" color="#8E6E53"
+              <Button title="Start" color="#8E6E53"
                 onPress={() => this.medium()}
               />}
           />
@@ -56,6 +54,10 @@ class Level extends Component {
 
           />
         </View>
+        <Button title="Score Board"
+                color="#8E6E53"
+                onPress={() => this.props.navigation.navigate('Scores')}
+              />
       </View>
     );
   }

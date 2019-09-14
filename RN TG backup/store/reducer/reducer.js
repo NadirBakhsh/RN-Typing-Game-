@@ -1,19 +1,23 @@
 const INTITIAL_STATE = {
-    wordsArray : ["able","accident","active"],
+    wordsArray : ["Activist","Activity","Address","Admit","Ago","Along"],
+    user : {playerName : "Guset", email: ''},
+    level : "",
   }
 
-  //,"activist","activity","address","admit","ago","along"
+
   
   const reducer = (state = INTITIAL_STATE,action) =>{
     switch(action.type){
   
-      case "ESAY" : return { ...state, shaffulTimer : 20000 }
+      case "ESAY" : return { ...state, shaffulTimer : 30000 , level : "esay"  }
   
-      case "MEDIUM" : return {...state,shaffulTimer : 10000 }
+      case "MEDIUM" : return {...state,shaffulTimer : 15000 , level : "medium" }
 
-      case "HARD" : return {...state,shaffulTimer : 5000}
+      case "HARD" : return {...state,shaffulTimer : 5000, level : "hard"}
       
       case "SET_USER" : return {...state, user: action.data}
+     
+      case "SET_ALL_USER" : return {...state, allUsers: action.data}
     }
       return state
   

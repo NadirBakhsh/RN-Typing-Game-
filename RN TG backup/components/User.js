@@ -17,9 +17,9 @@ class User extends Component {
 
 
 
-    signUpRes() {
+  async  signUpRes() {
         if (this.state.playerName && this.state.email) {
-            fetch("https://nadirabc.herokuapp.com/user/addUser", {
+         await fetch("https://nadirabc.herokuapp.com/user/addUser", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -27,6 +27,9 @@ class User extends Component {
                 body: JSON.stringify({
                     name: this.state.playerName,
                     email: this.state.email,
+                    esay: 0,
+                    medium: 0,
+                    hard: 0,
                 })
             }
             ).then(res => res.json())
@@ -38,9 +41,11 @@ class User extends Component {
                         alert('Wrong Pass word')
                     }
                 }).then(() => {
-                    this.props.navigation.navigate('Level')
+                    this.props.navigation.navigate('Login')
                 })
-                .then(data => console.log(data))
+                .then(data => console.log(data)).catch(()=>{
+                    alert("Email already Register")
+                })
         } else {
             alert("Field is emty")
         }

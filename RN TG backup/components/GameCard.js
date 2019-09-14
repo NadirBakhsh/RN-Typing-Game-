@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 
-import {View} from 'react-native'
+import {View,Text} from 'react-native'
 
 const MyComponent = (props) => (
   <Card style={{width:'90%',}}>
@@ -10,7 +10,10 @@ const MyComponent = (props) => (
       <Paragraph style={{marginLeft: 40}}>{props.Paragraph}</Paragraph>
     </Card.Content>
     
-    <View style={{display:'flex',alignItems:'center',marginTop:10}}>{props.Input}</View>
+    <View style={{display:'flex',alignItems:'center',marginTop:10}}>
+    {props.component}
+    {props.Input}
+    </View>
     
     <Card.Actions style={{marginTop:10 ,marginLeft: 40,padding: 10,display:'flex',flexDirection:'row-reverse'}}>
         {props.Button}
