@@ -1,9 +1,16 @@
 const express = require('express');
 
 const router = express.Router();
-
-
 const Users = require('../models/Users');
+
+
+router.get("/getAll", (req, res) => {
+    Users.find({})
+    .then(result => res.send(result))
+    .catch(e => res.send({message: e.message}))
+})
+
+
 router.post('/addUser',(req,res)=>{
     const user = req.body;
     const newUser = new Users(user);
@@ -17,11 +24,16 @@ router.post('/addUser',(req,res)=>{
 })
 
 
+router.put("/update", (req, res) => {
+    Users.updateOne({email: req.body.email}, req.body.score)
+    .then(result => res.send(result))
+    .catch(e => res.send({message: e.message}))
+})
+
 router.post("/getUserByEmail",(req,res)=>{
     const email = req.body.email;
-  //  const user = Users.find({name});
-    const user = Users.find({ $text: { $search: `"\"${email}\""`} });
-    
+    const user = Users.find({email});
+   // const user = Users.find({ $text: { $search: `"\"${email}\""`} });
     user.then((data)=>{
     res.send({result:data})
     })
@@ -30,27 +42,9 @@ router.post("/getUserByEmail",(req,res)=>{
     })
     })
 
-
-
+    module.exports = router
+    
 // heroku install
-
-//
-
-// fetch("/user/addUser"{
-//     method:"POST",
-//     headers:{
-//     'Content-Type':'application/json'
-//     },
-//     body:JSON.stringify({
-//     name : 'sana khan',
-//     email : "ali@gmail.com"
-//     })}
-// ).then(res=>res.json())
-// .then(data=>console.log(data))
-
-
-module.exports = router
-
 // ager hum ko request se body chahiya to server may body- parser karna hoga
 
 

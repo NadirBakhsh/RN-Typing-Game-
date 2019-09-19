@@ -20,11 +20,10 @@ router.post('/addscore',(req,res)=>{
 
 
 // router.put("/update", (req, res) => {
-//     Scores.updateOne({_userId: req.body._userId}, {name: req.body.name})
+//     Scores.updateOne({_userId: req.body._userId}, {hard : 2222})
 //     .then(result => res.send(result))
 //     .catch(e => res.send({message: e.message}))
 // })
-
 
 module.exports = router
 

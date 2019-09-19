@@ -7,10 +7,12 @@ const UserSchema = new Schema({
        type :  String,
     },
     email: {
-        type: String,
-        require: true,
-        text : true,
+        type: String, require: true, index:true, unique:true,sparse:true
     },
+    esay: Number,
+    medium: Number,
+    hard: Number,
+    time: Number,
 })
 
 const users = mongoose.model('Users', UserSchema)

@@ -5,6 +5,10 @@ const app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 
+const cors = require('cors');
+app.use(cors())
+
+
 const db = require('./config/db');
 
 db.connection.once("open" , ()=>{
@@ -19,22 +23,5 @@ app.listen(process.env.PORT || 3002,()=>{
 })
 
 app.use('/',require('./routes/index'));
-
-
-
-
-// app.get('/getAllfriends',(req,res)=>{
-//     console.log("hello world")
-//     res.send({userName : 'Nadir'})
-// })
-
-
-// app.post('/addFriend',(req,res)=>{
-//     console.log("hello world")
-//     res.send({userName : 'Ali'})
-// })
-
-
-
 
 //https://www.youtube.com/watch?v=5yTazHkDR4o

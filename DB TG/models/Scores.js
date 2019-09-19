@@ -8,11 +8,11 @@ const ScoresSchema = new Schema({
         type: String,
         text: true,
     },
-    scores: {
+   
         esay: Number,
         medium: Number,
         hard: Number,
-    }
+   
 })
 
 const scores = mongoose.model('scores', ScoresSchema)
