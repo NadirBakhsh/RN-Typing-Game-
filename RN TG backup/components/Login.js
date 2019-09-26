@@ -43,7 +43,6 @@ class User extends Component {
                         medium: this.state.result.medium,
                         hard: this.state.result.hard,
                     }
-                    //console.log(user,"uuuuuuuuuuuuuuuuuuuuuuuuuu")
                     this.props.store_user(user);
                     this.props.navigation.navigate('Level')
                 } else {
@@ -65,14 +64,12 @@ class User extends Component {
             <View style={styles.container}>
                 {<Card
                     word={"Enter Your Email"}
-                    Button={<Button title="Start Game" color="#8E6E53"
-                        onPress={() => this.loginHendelar()}
-                    />}
                     Input={<TextInput
                         style={{ borderRadius: 4, height: 40, width: "70%", borderColor: 'gray', borderWidth: 1, padding: 5 }}
                         onChangeText={email => this.setState({ email })}
                         value={this.state.email}
                         autoFocus={true}
+                        onSubmitEditing={()=>this.loginHendelar()}
                     />}
                 />}
 

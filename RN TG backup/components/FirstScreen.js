@@ -8,27 +8,24 @@ import { get_all_user } from '../store/action';
 
 class FirstScreen extends Component {
 
-constructor(props) {
-    super(props)
-    this.state = {
+    constructor(props) {
+        super(props)
+        this.state = {
 
+        }
     }
-}
 
-componentDidMount(){
-    this.fetchAllUser()
-}
+    componentDidMount() {
+        this.fetchAllUser()
+    }
 
-async fetchAllUser(){
-  await  fetch('https://nadirabc.herokuapp.com/user/getAll')
-  .then(response => response.json())
-  .then(data =>{
-      this.props.store_users_data(data)
-  }).then(data => console.log(data))
-  
-}
-
-
+    async fetchAllUser() {
+        await fetch('https://nadirabc.herokuapp.com/user/getAll')
+            .then(response => response.json())
+            .then(data => {
+                this.props.store_users_data(data)
+            })
+    }
 
     render() {
         return (
@@ -43,7 +40,6 @@ async fetchAllUser(){
                             onPress={() => this.props.navigation.navigate('Login')}
                         />}
                     />
-
                     <Card
                         word={"Playing Frist Time"}
                         Paragraph={'If you are playing this game first time need to register yourself as Player'}
@@ -54,9 +50,9 @@ async fetchAllUser(){
                                 onPress={() => this.props.navigation.navigate('User')}
                             />}
                     />
-                    
+
                 </View>
-                      
+
             </View>
         );
     }
@@ -65,13 +61,13 @@ async fetchAllUser(){
 
 function mapStateToProps(state) {
     return {
-      
+
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        store_users_data : (users) => dispatch(get_all_user(users))
+        store_users_data: (users) => dispatch(get_all_user(users))
     }
 }
 

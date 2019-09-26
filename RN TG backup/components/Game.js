@@ -21,14 +21,17 @@ class Game extends Component {
             score: 0,
             textWord: "",
             countDownTime: this.props.timers,
+            wordTimer: this.props.timers,
+            scoreTimer: 0,
         }
     }
+
 
     componentDidMount() {
         this.fetchAllUser()
         const unShuffleArray = this.props.wordsArray;
         this.shuffle(unShuffleArray)
-        setInterval(this.changeWord, this.state.countDownTime);
+         this.tc = setInterval(this.changeWord, this.state.wordTimer);
     }
 
     componentWillUnmount() {
@@ -93,7 +96,7 @@ class Game extends Component {
         const text = this.state.textWord;
         if (text === word) {
             this.setState({
-                score: 10 + this.state.score,
+                score:  this.state.score + 10 ,
                 index: this.state.index + 1,
             })
             this.state.textWord = "";
@@ -101,7 +104,7 @@ class Game extends Component {
         }
         if (this.state.index === this.state.wordsArray.length - 1) {
             this.state.textWord = "";
-            this.setState({ gameEnd: true })
+            this.setState({ gameEnd: true, })
             this.checkSwitch()
         }
 
@@ -122,7 +125,10 @@ class Game extends Component {
             },
             mode: 'cors',
             cache: 'default',
-            body: JSON.stringify({ email: this.props.user.email, score: { [this.props.level]: this.state.score } })
+            body: JSON.stringify({ 
+                email: this.props.user.email, 
+                score: { [this.props.level]: this.state.score }, 
+                time: this.state.scoreTimer })
         }
         )
             .then(res => res.json())
@@ -141,6 +147,7 @@ class Game extends Component {
                 <View style={{ display: 'flex', alignItems: 'center' }}>
                     {!this.state.gameEnd && <CountDown
                         until={this.state.wordsArray.length * this.state.countDownTime / 1000}
+                        onChange={()=>{this.setState({scoreTimer : this.scoreTimer + 1})}}
                         size={20}
                         digitStyle={{ backgroundColor: '#FFF' }}
                         digitTxtStyle={{ color: '#1CC625' }}

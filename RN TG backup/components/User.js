@@ -15,11 +15,9 @@ class User extends Component {
         }
     }
 
-
-
-  async  signUpRes() {
+   async  signUpRes() {
         if (this.state.playerName && this.state.email) {
-         await fetch("https://nadirabc.herokuapp.com/user/addUser", {
+            await fetch("https://nadirabc.herokuapp.com/user/addUser", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -30,6 +28,7 @@ class User extends Component {
                     esay: 0,
                     medium: 0,
                     hard: 0,
+                    time: 0,
                 })
             }
             ).then(res => res.json())
@@ -43,7 +42,7 @@ class User extends Component {
                 }).then(() => {
                     this.props.navigation.navigate('Login')
                 })
-                .then(data => console.log(data)).catch(()=>{
+                .then(data => console.log(data)).catch(() => {
                     alert("Email already Register")
                 })
         } else {
@@ -57,14 +56,13 @@ class User extends Component {
 
     signUp() {
         this.signUpRes()
-        const user = { playerName: this.state.playerName,   email: this.state.email }
+        const user = { playerName: this.state.playerName, email: this.state.email }
         this.props.store_user(user);
     }
 
     render() {
         return (
             <View style={styles.container}>
-
                 {<Card
                     word={"Sign Up"}
                     Button={<Button title="Start Game" color="#8E6E53"
@@ -99,7 +97,6 @@ class User extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-
         store_user: (user) => dispatch(update_user(user))
     }
 }

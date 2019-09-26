@@ -1,5 +1,5 @@
 const INTITIAL_STATE = {
-    wordsArray : ["Activist","Activity","Address","Admit","Ago","Along"],
+    wordsArray : ["Activist","Activity","Address","Admit","Ago","Along","Aaa"],
     user : {playerName : "Guset", email: ''},
     level : "",
   }

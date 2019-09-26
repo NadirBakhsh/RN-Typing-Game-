@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "Typing Game",
-    "slug": "typing-game",
+    "name": "RN Navigation",
+    "slug": "Rn_Navigation",
     "privacy": "public",
-    "sdkVersion": "34.0.0",
+    "sdkVersion": "33.0.0",
     "platforms": [
       "ios",
       "android",
