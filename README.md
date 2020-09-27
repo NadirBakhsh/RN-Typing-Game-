@@ -1,1 +1,1 @@
-# RN-Typing-Game-
+# RN-Typing-Game
